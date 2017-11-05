@@ -1,0 +1,18 @@
+server {
+  listen 80;
+  server_name example.org;
+  access_log /var/log/nginx/nodejs_project.log;
+  charset utf-8;
+
+  root /www/public;
+  index index.html;
+
+  location /public {
+    alias /www/public;
+  }
+
+  location / {
+    try_files $uri $uri/ =404;
+  }
+
+}
